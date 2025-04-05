@@ -270,7 +270,12 @@ function sendRecognitionRequest(formData, resultContainer, progressBar, progress
             }
         });
 }
-
+//跳转到详细信息页面
+// 在当前页面打开详细信息页面
 function goToInfo() {
-    window.location.href = "/info";
+    window.location.href = '/info';
 }
+/*
+function goToInfo() {
+    window.open('/info');
+}*/

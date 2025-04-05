@@ -184,3 +184,25 @@ button:hover {
     transform: scale(1.1); /* 鼠标悬停时放大头像 */
     transition: transform 0.2s ease; /* 平滑过渡效果 */
 }
+
+/* 设置 select 元素的样式 */
+#recognition-type {
+    width: 200px; /* 设置宽度 */
+    height: 40px; /* 设置高度 */
+    background-color: #ff8c00; /* 设置背景颜色 */
+    border: none; /* 移除默认边框 */
+    border-radius: 5px; /* 添加圆角 */
+    font-size: 12px; /* 设置字体大小 */
+    color: #ffffff; /* 设置文字颜色 */
+    padding: 10px; /* 添加内边距 */
+}
+
+/* 设置 option 元素的样式 */
+#recognition-type option {
+    background-color: #ffffff; /* 设置选项背景颜色 */
+    color: #000000; /* 设置选项文字颜色 */
+    font-size: 16px; /* 设置选项字体大小 */
+}
+.type-color {
+            color: #ff8c00; /* 设置文字颜色为橙色 */
+        }

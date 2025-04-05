@@ -1,96 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>用户详细信息</title>
-    <link rel="stylesheet" href="/static/index.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .user-info-table {
-            width: 60%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        .user-info-table th, .user-info-table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-        .user-info-table th {
-            background-color: #f4f4f4;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详细信息</title>
+    <link rel="stylesheet" href="/static/info.css">
 </head>
 <body>
-    <h1>用户详细信息</h1>
-    <button onclick="goToLogin()">返回登录</button>
-
-    <!-- 用户信息展示区域 -->
-    <div id="user-info">
-        <h2>上传记录</h2>
-        {% if uploaded_images %}
-            <table class="user-info-table">
-                <thead>
-                    <tr>
-                        <th>图片路径</th>
-                        <th>上传时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for image in uploaded_images %}
-                        <tr>
-                            <td>{{ image.image_path }}</td>
-                            <td>{{ image.upload_time }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>暂无上传记录。</p>
-        {% endif %}
-    </div>
-
-    <script>
-        // 获取用户上传记录的函数
-        async function fetchUploadedImageInfos() {
-            try {
-                const response = await fetch('/get_uploaded_images');
-                const data = await response.json();
-
-                if (data.status === 'success') {
-                    const images = data.uploaded_images;
-                    const tableBody = document.querySelector('#user-info table tbody');
-                    tableBody.innerHTML = ''; // 清空表格内容
-
-                    images.forEach(image => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${image.image_path}</td>
-                            <td>${image.upload_time}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                } else {
-                    alert('无法获取上传记录');
-                }
-            } catch (error) {
-                console.error('获取上传记录失败:', error);
-                alert('获取上传记录时发生错误');
-            }
-        }
-
-        // 页面加载完成后获取上传记录
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchUploadedImageInfos();
-        });
-
-        // 返回登录页面的函数
-        function goToLogin() {
-            window.location.href = '/login';
-        }
-    </script>
+<h1>照片上传信息</h1>
+<table>
+    <thead>
+    <tr>
+        <th>上传时间</th>
+        <th>图片路径</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for image in images %}
+    <tr>
+        <td>{{ image.upload_time }}</td>
+        <td><a href="{{ image.image_path }}" target="_blank">{{ image.image_path }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<button onclick="goBackIndex()" class="fixed-button">返回</button>
+<script src="/static/info.js"></script>
 </body>
 </html>

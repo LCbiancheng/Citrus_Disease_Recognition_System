@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+/* 固定按钮样式 */
+.fixed-button {
+    position: fixed; /* 固定位置 */
+    bottom: 20px; /* 距离底部 20px */
+    right: 20px; /* 距离右侧 20px */
+    background-color: #FF8C00; /* 按钮背景色 */
+    color: white; /* 按钮文字颜色 */
+    font-weight: bold; /* 加粗文字 */
+    padding: 10px 20px; /* 内边距 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer; /* 鼠标悬停时显示手型 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    z-index: 1000; /* 确保按钮在最上层 */
+    width: auto; /* 宽度自适应 */
+    max-width: 150px; /* 最大宽度 */
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.fixed-button:hover {
+    background-color: #FF7F00; /* 鼠标悬停时的背景色 */
+}

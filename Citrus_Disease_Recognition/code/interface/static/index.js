@@ -241,7 +241,7 @@ function sendRecognitionRequest(formData, resultContainer, progressBar, progress
                 const resultText = `
                 <h3>图片 ${index + 1} 识别结果</h3>
                 <p>类别: ${result.label_cn} (${result.label_en})</p>
-                <p>置信度: ${result.confidence}</p>
+<!--                <p>置信度: ${result.confidence}</p>-->
                 <p><a href="${diseaseLink}" target="_blank">查看解决办法</a></p>
             `;
 
@@ -270,12 +270,14 @@ function sendRecognitionRequest(formData, resultContainer, progressBar, progress
             }
         });
 }
-//跳转到详细信息页面
+
+/*
 // 在当前页面打开详细信息页面
 function goToInfo() {
     window.location.href = '/info';
-}
-/*
+}*/
+
+// 在新的页面打开详细信息页面
 function goToInfo() {
     window.open('/info');
-}*/
+}

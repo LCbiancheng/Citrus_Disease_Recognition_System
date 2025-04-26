@@ -1,6 +1,5 @@
 from datetime import datetime
-
-from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for
+from flask import Flask, request, jsonify, session, redirect, url_for
 import mysql.connector
 import bcrypt
 import torch
@@ -9,8 +8,7 @@ import numpy as np
 from PIL import Image
 from torchvision import transforms
 import os
-import tempfile
-from flask import render_template  # 导入 render_template
+from flask import render_template
 
 # 初始化 Flask 应用
 app = Flask(__name__, static_folder='static')
@@ -100,11 +98,13 @@ def info():
 def index():
     return render_template('index.html')  # 自动从 templates 文件夹中加载 index.html
 
+
 # 自定义图片存储目录（服务器上的真实路径）
-IMAGE_UPLOAD_DIR = 'static/images' #保存图片的路径
+IMAGE_UPLOAD_DIR = 'static/images'  # 保存图片的路径
 
 # 确保图片存储目录存在
 os.makedirs(IMAGE_UPLOAD_DIR, exist_ok=True)
+
 
 # 插入图片信息到数据库
 def save_to_database(user_id, image_path):
@@ -229,11 +229,12 @@ def recognize_multiple():
             'image_path': image_path,  # 服务器上的真实路径
             'label_cn': label_cn,
             'label_en': label_en,
-            'confidence': f"{confidence * 100:.2f}%",
+            # 'confidence': f"{confidence * 100:.2f}%",
             'treatment': "治疗方法待定"
         })
 
     return jsonify({'results': results})
+
 
 # 用户注销
 @app.route('/logout', methods=['POST'])
